@@ -8,7 +8,7 @@ module load foss/2022a CUDA/11.7.0
 date=$(date '+%Y-%m-%d_%H_%M_%S')
 DIVIDER="=============="
 # node information
-printf "CUDA_VISIBLE_DEVICES ${CUDA_VISIBLE_DEVICES}\n \
+NODEINFO=(printf "CUDA_VISIBLE_DEVICES ${CUDA_VISIBLE_DEVICES}\n \
 GPU_DEVICE_ORDINAL ${GPU_DEVICE_ORDINAL}\n \
 HOSTNAME ${HOSTNAME}\n \
 SLURMD_NODENAME ${SLURMD_NODENAME}\n \
@@ -46,10 +46,12 @@ SLURM_TOPOLOGY_ADDR_PATTERN ${SLURM_TOPOLOGY_ADDR_PATTERN}\n \
 SLURM_WORKING_CLUSTER ${SLURM_WORKING_CLUSTER}\n \
 TERM ${TERM}\n \
 TMPDIR ${TMPDIR}\n \
-USER ${USER}\n" > "$HOME/logs/${date}.txt"
+USER ${USER}\n")
+GPUINFO=(nvidia-smi)
+"${GPUINFO}\n${NODEINFO}" > "$HOME/logs/${date}.txt"
 cat "$HOME/logs/${date}.txt"
 echo "$DIVIDER"
-nvidia-smi
+
 echo '$DIVIDER'
 cd "$HOME/ambrosic/FluidX3D"
 ls
