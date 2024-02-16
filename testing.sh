@@ -8,7 +8,7 @@ module load foss/2022a CUDA/11.7.0
 date=$(date '+%Y-%m-%d_%H_%M_%S')
 DIVIDER="=============="
 # node information
-NODEINFO=(printf "CUDA_VISIBLE_DEVICES ${CUDA_VISIBLE_DEVICES}\n \
+NODEINFO=("CUDA_VISIBLE_DEVICES ${CUDA_VISIBLE_DEVICES}\n \
 GPU_DEVICE_ORDINAL ${GPU_DEVICE_ORDINAL}\n \
 HOSTNAME ${HOSTNAME}\n \
 SLURMD_NODENAME ${SLURMD_NODENAME}\n \
@@ -48,13 +48,14 @@ TERM ${TERM}\n \
 TMPDIR ${TMPDIR}\n \
 USER ${USER}\n")
 GPUINFO=(nvidia-smi)
-printf "${GPUINFO}\n${NODEINFO}" > "$HOME/logs/${date}.txt"
+printf "${GPUINFO}\n${DIVIDER}\n${NODEINFO}" > "$HOME/logs/${date}.txt"
 cat "$HOME/logs/${date}.txt"
 echo "$DIVIDER"
 
 echo '$DIVIDER'
 cd "$HOME/ambrosic/FluidX3D"
-ls
+
+source /make.sh > "$HOME/logs/${date}-FLUIDX3D.txt"
 
 
 #source /make.sh
