@@ -48,7 +48,7 @@ TERM ${TERM}\n \
 TMPDIR ${TMPDIR}\n \
 USER ${USER}\n")
 GPUINFO=(nvidia-smi)
-"${GPUINFO}\n${NODEINFO}" > "$HOME/logs/${date}.txt"
+printf "${GPUINFO}\n${NODEINFO}" > "$HOME/logs/${date}.txt"
 cat "$HOME/logs/${date}.txt"
 echo "$DIVIDER"
 
