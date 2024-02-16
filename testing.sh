@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --nodes=1 --ntasks=1
 #SBATCH --time=1:00:00
-#SBATCH --mem-per-core=1G
-#SBATCH --gres=gpu:1:1
+#SBATCH --mem=6G
+#SBATCH --gres=gpu:1
 
 module load foss/2022a CUDA/11.7.0
 date=$(date '+%Y-%m-%d_%H_%M_%S')
