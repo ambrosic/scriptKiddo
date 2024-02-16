@@ -2,12 +2,12 @@
 #SBATCH --nodes=1 --ntasks=6
 #SBATCH --time=1:00:00
 #SBATCH --mem=6G
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:1:1
 
 module load foss/2022a CUDA/11.7.0
-
-cd ~/ambrosic/FluidX3D/
-echo "CUDA_VISIBLE_DEVICES ${CUDA_VISIBLE_DEVICES}\n \
+DIVIDER="=============="
+# node information
+printf "CUDA_VISIBLE_DEVICES ${CUDA_VISIBLE_DEVICES}\n \
 GPU_DEVICE_ORDINAL ${GPU_DEVICE_ORDINAL}\n \
 HOSTNAME ${HOSTNAME}\n \
 SLURMD_NODENAME ${SLURMD_NODENAME}\n \
@@ -46,5 +46,10 @@ SLURM_WORKING_CLUSTER ${SLURM_WORKING_CLUSTER}\n \
 TERM ${TERM}\n \
 TMPDIR ${TMPDIR}\n \
 USER ${USER}\n"
+echo "$DIVIDER"
+
+cd "$HOME/ambrosic/FluidX3D"
 ls
+
+
 #source /make.sh
