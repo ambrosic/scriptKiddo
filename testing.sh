@@ -47,8 +47,10 @@ SLURM_WORKING_CLUSTER ${SLURM_WORKING_CLUSTER}\n \
 TERM ${TERM}\n \
 TMPDIR ${TMPDIR}\n \
 USER ${USER}\n" > "$HOME/logs/${date}.txt"
+cat "$HOME/logs/${date}.txt"
 echo "$DIVIDER"
 nvidia-smi
+echo '$DIVIDER'
 cd "$HOME/ambrosic/FluidX3D"
 ls
 
