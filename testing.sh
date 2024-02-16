@@ -2,7 +2,7 @@
 #SBATCH --nodes=1 --ntasks=1
 #SBATCH --time=1:00:00
 #SBATCH --mem=6G
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:2
 
 module load foss/2022a CUDA/11.7.0
 date=$(date '+%Y-%m-%d_%H_%M_%S')
@@ -57,7 +57,8 @@ cd "$HOME/ambrosic/FluidX3D"
 #source /make.sh > "$HOME/logs/${date}-FLUIDX3D.txt"
 
 
+printf "${GPUINFO}\n${DIVIDER}\n${NODEINFO}" > "$HOME/logs/${date}.txt"
 OUTPUT=(./make.sh)
-printf "${GPUINFO}\n${DIVIDER}\n${NODEINFO}\n${DIVIDER}\n${OUTPUT}" > "$HOME/logs/${date}.txt"
+printf "${DIVIDER}\n${OUTPUT}\n" > "$HOME/logs/${date}-FLUIDX3D.txt"
 cat "$HOME/logs/${date}.txt"
 
