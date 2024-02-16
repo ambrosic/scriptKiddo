@@ -1,10 +1,11 @@
 #!/bin/bash
-#SBATCH --nodes=1 --ntasks=6
+#SBATCH --nodes=1 --ntasks=1
 #SBATCH --time=1:00:00
-#SBATCH --mem=6G
+#SBATCH --mem-per-core=1G
 #SBATCH --gres=gpu:1:1
 
 module load foss/2022a CUDA/11.7.0
+date=$(date '+%Y-%m-%d_%H_%M_%S')
 DIVIDER="=============="
 # node information
 printf "CUDA_VISIBLE_DEVICES ${CUDA_VISIBLE_DEVICES}\n \
@@ -45,9 +46,9 @@ SLURM_TOPOLOGY_ADDR_PATTERN ${SLURM_TOPOLOGY_ADDR_PATTERN}\n \
 SLURM_WORKING_CLUSTER ${SLURM_WORKING_CLUSTER}\n \
 TERM ${TERM}\n \
 TMPDIR ${TMPDIR}\n \
-USER ${USER}\n"
+USER ${USER}\n" > "$HOME/logs/${date}.txt"
 echo "$DIVIDER"
-
+nvidia-smi
 cd "$HOME/ambrosic/FluidX3D"
 ls
 
