@@ -6,6 +6,6 @@
 
 module load foss/2022a CUDA/11.7.0
 
-cd /ambrosic/FluidX3D/
+cd ~/ambrosic/FluidX3D/
 ls
 #source /make.sh
