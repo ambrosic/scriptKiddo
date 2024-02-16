@@ -48,14 +48,16 @@ TERM ${TERM}\n \
 TMPDIR ${TMPDIR}\n \
 USER ${USER}\n")
 GPUINFO=(nvidia-smi)
-printf "${GPUINFO}\n${DIVIDER}\n${NODEINFO}" > "$HOME/logs/${date}.txt"
-cat "$HOME/logs/${date}.txt"
+
 echo "$DIVIDER"
 
 echo '$DIVIDER'
 cd "$HOME/ambrosic/FluidX3D"
 
-source /make.sh > "$HOME/logs/${date}-FLUIDX3D.txt"
+#source /make.sh > "$HOME/logs/${date}-FLUIDX3D.txt"
 
 
-#source /make.sh
+OUTPUT=(./make.sh)
+printf "${GPUINFO}\n${DIVIDER}\n${NODEINFO}\n${DIVIDER}\n${OUTPUT}" > "$HOME/logs/${date}.txt"
+cat "$HOME/logs/${date}.txt"
+
